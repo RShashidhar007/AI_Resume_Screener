@@ -1,44 +1,62 @@
-# 🤖 HireSense AI – Intelligent Resume Screening & Ranking System
+# 🤖 HireSense AI – Next-Gen Resume Screening & Ranking System
 
-## 🌐 Live Demo  
-You can check out the live demo of the system here: [Live Demo - HireSense AI](https://hiresense-ai-qesi8wq.streamlit.app/)
+**HireSense AI** is a professional-grade recruitment platform that leverages **Llama 3.1 LLMs** and **NLP** to automatically screen, evaluate, and rank resumes with human-like intelligence. It transforms the hiring process from manual keyword searching into data-driven talent acquisition.
 
-## 📌 Overview  
-**HireSense AI** is an intelligent recruitment tool that uses **AI and NLP** to automatically screen, evaluate, and rank resumes based on job-specific requirements. It helps recruiters identify the most suitable candidates with minimal effort.
+## 📌 Overview
+Traditional recruitment tools rely on rigid keyword matching. **HireSense AI** goes beyond that by using advanced Large Language Models (via Groq API) to understand the context, experience, and potential of every candidate, providing recruiters with instant, actionable insights.
 
-## 🚀 Features  
-- **📄 Resume Parsing** – Extracts skills, education, and experience from uploaded files.  
-- **🧠 AI-Powered Scoring** – Evaluates resumes based on job-match relevance.  
-- **📝 NLP Keyword Analysis** – Matches job description terms to resume content.  
-- **⚡ Instant Shortlisting** – Displays top candidates automatically.  
-- **📊 User Dashboard** – Shows ranked results with insights.  
-- **🔧 Custom Filters** – Adjust scoring weights for different roles.
+## 🚀 Key Features
+- **🧠 AI-Powered Scoring** – Uses Llama 3.1 to intelligently score resumes (0-100%) based on context, not just keywords.
+- **✅ Automated Hiring Decisions** – Get instant "Hire," "Maybe," or "Reject" recommendations for every candidate.
+- **🚀 Gap Analysis** – Automatically identifies missing technical skills needed for a 100% match to the job role.
+- **📄 Multi-Format Support** – Seamlessly parses and analyzes both **PDF** and **DOCX** resumes.
+- **📊 Interactive Dashboard** – Beautiful visualizations of candidate distributions and ranking history.
+- **💼 Professional HR Reports** – Export ranked results and AI insights directly to **CSV** or **Excel**.
+- **🔒 Enterprise Security** – Secure API management via environment variables (`.env`).
 
-## 🛠️ Technologies Used  
-- **Python** (Streamlit for frontend)  
-- **SQLite** (Lightweight backend database)  
-- **NLP** (spaCy, Scikit-learn)  
-- **PDF Parsing** (PyMuPDF)  
+## 🛠️ Technology Stack
+- **Frontend**: Streamlit (Modern Python Web Framework)
+- **AI Engine**: Groq API (Llama 3.1-8B-Instant)
+- **NLP**: Scikit-learn (Fallback matching & TF-IDF)
+- **Database**: SQLite (Ranking history and user profiles)
+- **Parsing**: PyPDF, Python-Docx
+- **Visualization**: Plotly Express
 
-## 📂 How It Works  
-1. **Upload Resumes** – Drop PDF resumes into the uploader.  
-2. **Job Input** – Enter job title and description.  
-3. **Match & Score** – AI processes and ranks resumes.  
-4. **Review Results** – See top candidates in the dashboard.
+## 📂 How It Works
+1. **Configure API**: Set up your Groq API key in the `.env` file.
+2. **Upload Resumes**: Drop PDF or DOCX files into the dashboard.
+3. **Job Input**: Select a job title from the professional dropdowns and provide a job description.
+4. **AI Processing**: The system extracts education/skills and uses the LLM to score and recommend candidates.
+5. **Review & Decide**: Use the "Why this score?" insights to make fast, informed hiring decisions.
 
-## 🎯 Use Cases  
-✅ Recruiters hiring for tech and non-tech roles.  
-✅ HR teams processing bulk applications.  
-✅ Organizations adopting data-driven hiring.
+## 📦 Installation & Setup
 
-## 📦 Installation  
-### 🔹 Prerequisites  
-- Python 3.8+  
-- pip (Python package manager)  
+### 🔹 Prerequisites
+- Python 3.9+
+- Groq API Key (get one at [console.groq.com](https://console.groq.com/))
 
-### 🔹 Steps  
-```bash
-git clone https://github.com/Yashrajgithub/HireSense-AI.git
-cd HireSense-AI  
-pip install -r requirements.txt  
-streamlit run app.py  
+### 🔹 Steps
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/RShashidhar007/hiresence_AI.git
+   cd hiresence_AI
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configure Environment**
+   Create a `.env` file in the root directory and add your key:
+   ```env
+   GROQ_API_KEY=your_gsk_api_key_here
+   ```
+
+4. **Run the Application**
+   ```bash
+   streamlit run app.py
+   ```
+
+---
+*Empowering HR teams with AI-driven intelligence.*
