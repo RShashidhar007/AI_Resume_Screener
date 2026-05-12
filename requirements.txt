@@ -1,5 +1,5 @@
 streamlit==1.32.2
-pandas==2.2.2
+pandas
 pypdf==4.1.0
 scikit-learn==1.4.2
 openpyxl
@@ -7,3 +7,5 @@ plotly
 streamlit-option-menu
 streamlit-lottie
 requests
+groq
+python-dotenv
