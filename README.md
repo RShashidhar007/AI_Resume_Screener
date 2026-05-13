@@ -1,9 +1,9 @@
-# 🤖 HireSense AI – Next-Gen Resume Screening & Ranking System
+# 🤖 TalentHive AI – Next-Gen Resume Screening & Ranking System
 
-**HireSense AI** is a professional-grade recruitment platform that leverages **Llama 3.1 LLMs** and **NLP** to automatically screen, evaluate, and rank resumes with human-like intelligence. It transforms the hiring process from manual keyword searching into data-driven talent acquisition.
+**TalentHive AI** is a professional-grade recruitment platform that leverages **Llama 3.1 LLMs** and **NLP** to automatically screen, evaluate, and rank resumes with human-like intelligence. It transforms the hiring process from manual keyword searching into data-driven talent acquisition.
 
 ## 📌 Overview
-Traditional recruitment tools rely on rigid keyword matching. **HireSense AI** goes beyond that by using advanced Large Language Models (via Groq API) to understand the context, experience, and potential of every candidate, providing recruiters with instant, actionable insights.
+Traditional recruitment tools rely on rigid keyword matching. **TalentHive AI** goes beyond that by using advanced Large Language Models (via Groq API) to understand the context, experience, and potential of every candidate, providing recruiters with instant, actionable insights.
 
 ## 🚀 Key Features
 - **🧠 AI-Powered Scoring** – Uses Llama 3.1 to intelligently score resumes (0-100%) based on context, not just keywords.

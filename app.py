@@ -30,7 +30,7 @@ import sqlite3
 
 # --- Streamlit Page Config ---
 st.set_page_config(
-    page_title="HireSense AI",
+    page_title="TalentHive AI",
     page_icon="📄",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -560,7 +560,7 @@ def show_login_page():
 
 def show_register_page():
     st.markdown("<h2 style='text-align: center; color: #1e293b; margin-bottom: 0.5rem;'>Create an account</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #64748b; margin-bottom: 2rem;'>Join HireSense AI to streamline your hiring.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #64748b; margin-bottom: 2rem;'>Join TalentHive AI to streamline your hiring.</p>", unsafe_allow_html=True)
     
     reg_email = st.text_input(" Username*", key="reg_email", placeholder="Enter your username")
     reg_name = st.text_input(" Full Name", key="reg_name", placeholder="Enter your full name")
@@ -674,7 +674,7 @@ def show_dashboard():
             font-weight: 800;
             text-align: center;
             font-size: 2.5rem;">
-             Welcome to HireSense AI
+             Welcome to TalentHive AI
         </h2>
     """, unsafe_allow_html=True)
 
@@ -901,7 +901,7 @@ def render_sidebar():
     # Professional Sidebar Branding
     st.sidebar.markdown(f"""
         <div style="text-align: center; padding: 20px 0;">
-            <h1 style="color: #1fc7d4; font-size: 32px; font-weight: 800; margin-bottom: 0;">HireSense AI</h1>
+            <h1 style="color: #1fc7d4; font-size: 32px; font-weight: 800; margin-bottom: 0;">TalentHive AI</h1>
             <p style="color: #64748b; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Next-Gen Recruitment</p>
         </div>
     """, unsafe_allow_html=True)
@@ -957,7 +957,7 @@ def render_sidebar():
             
             st.sidebar.markdown(f"""
                 <div style="margin-top: 50px; text-align: center; color: #94a3b8; font-size: 12px;">
-                    <p>© 2024 HireSense AI<br>v2.1.0-AI</p>
+                    <p>© 2024 TalentHive AI<br>v2.1.0-AI</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -993,7 +993,7 @@ def render_footer():
         }
         </style>
         <div class="footer">
-            © 2026 AI HireSense AI
+            © 2026 AI TalentHive AI
         </div>
     """, unsafe_allow_html=True)
 
