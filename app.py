@@ -536,12 +536,12 @@ def show_login_page():
     st.markdown("<h2 style='text-align: center; color: #1e293b; margin-bottom: 0.5rem;'>Welcome back</h2>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #64748b; margin-bottom: 2rem;'>Enter your credentials to access your account.</p>", unsafe_allow_html=True)
     
-    login_email = st.text_input("👤 Username", value="raghu", key="login_email", placeholder="Enter your username")
-    login_password = st.text_input("🔑 Password", value="raghu123", type="password", key="login_password", placeholder="Enter your password")
+    login_email = st.text_input(" Username", value="raghu", key="login_email", placeholder="Enter your username")
+    login_password = st.text_input(" Password", value="raghu123", type="password", key="login_password", placeholder="Enter your password")
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    if st.button("🔐 Login", use_container_width=True):
+    if st.button(" Login", use_container_width=True):
         if authenticate_user(login_email, login_password):
             st.session_state["authenticated"] = True
             st.session_state["user_email"] = login_email
@@ -550,55 +550,56 @@ def show_login_page():
             st.session_state["current_page"] = "dashboard"
             st.rerun()
         else:
-            st.error("❌ Invalid username or password")
+            st.error(" Invalid username or password")
             
     st.markdown("<p style='text-align: center; margin-top: 1.5rem;'>Don't have an account?</p>", unsafe_allow_html=True)
-    if st.button("📝 Create an account", use_container_width=True):
+    if st.button(" Create an account", use_container_width=True):
         st.session_state["current_page"] = "register"
         st.rerun()
+
 
 def show_register_page():
     st.markdown("<h2 style='text-align: center; color: #1e293b; margin-bottom: 0.5rem;'>Create an account</h2>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #64748b; margin-bottom: 2rem;'>Join HireSense AI to streamline your hiring.</p>", unsafe_allow_html=True)
     
-    reg_email = st.text_input("👤 Username*", key="reg_email", placeholder="Enter your username")
-    reg_name = st.text_input("👤 Full Name", key="reg_name", placeholder="Enter your full name")
-    reg_password = st.text_input("🔑 Password*", type="password", key="reg_password", placeholder="Enter your password")
-    reg_confirm_password = st.text_input("🔑 Confirm Password*", type="password", key="reg_confirm_password", placeholder="Confirm your password")
+    reg_email = st.text_input(" Username*", key="reg_email", placeholder="Enter your username")
+    reg_name = st.text_input(" Full Name", key="reg_name", placeholder="Enter your full name")
+    reg_password = st.text_input(" Password*", type="password", key="reg_password", placeholder="Enter your password")
+    reg_confirm_password = st.text_input(" Confirm Password*", type="password", key="reg_confirm_password", placeholder="Confirm your password")
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    if st.button("✅ Register", use_container_width=True):
+    if st.button(" Register", use_container_width=True):
         if not reg_email or not reg_password:
-            st.error("❌ Username and password are required")
+            st.error(" Username and password are required")
         elif reg_password != reg_confirm_password:
-            st.error("❌ Passwords do not match")
+            st.error(" Passwords do not match")
         else:
             if save_user(reg_email, reg_password, reg_name):
-                st.toast("✅ Registration successful! You can now log in.")
+                st.toast(" Registration successful! You can now log in.")
                 st.session_state["current_page"] = "login"
                 st.rerun()
             else:
-                st.warning("⚠ Username already taken. Please log in instead.")
+                st.warning(" Username already taken. Please log in instead.")
                 st.session_state["current_page"] = "login"
                 st.rerun()
                 
     st.markdown("<p style='text-align: center; margin-top: 1.5rem;'>Already have an account?</p>", unsafe_allow_html=True)
-    if st.button("↩️ Log in", use_container_width=True):
+    if st.button(" Log in", use_container_width=True):
         st.session_state["current_page"] = "login"
         st.rerun()
 
 def show_profile_page():
-    st.title("👤 User Profile")
+    st.title(" User Profile")
     st.markdown("### Manage your profile information and preferences.")
     
     profile = get_user_profile(st.session_state["user_email"])
     if not profile:
-        st.error("❌ Error loading profile data")
+        st.error(" Error loading profile data")
         return
     
     # Profile tabs
-    profile_tab, password_tab, history_tab = st.tabs(["✏️ Edit Profile", "🔐 Change Password", "📊 History"])
+    profile_tab, password_tab, history_tab = st.tabs([" Edit Profile", " Change Password", " History"])
     
     with profile_tab:
         st.subheader("Personal Information")
@@ -616,13 +617,13 @@ def show_profile_page():
         job_title = st.selectbox("Job Title", options=job_titles, index=job_titles.index(current_title))
         company = st.text_input("Company", value=profile["company"] if profile["company"] else "")
         
-        if st.button("💾 Save Profile"):
+        if st.button(" Save Profile"):
             if update_profile(profile["email"], name, job_title, company):
                 st.session_state["user_name"] = name
-                st.toast("✅ Profile updated successfully!")
+                st.toast(" Profile updated successfully!")
                 st.rerun()
             else:
-                st.error("❌ Error updating profile")
+                st.error(" Error updating profile")
     
     with password_tab:
         st.subheader("Change Password")
@@ -631,24 +632,24 @@ def show_profile_page():
         new_password = st.text_input("New Password", type="password")
         confirm_new_password = st.text_input("Confirm New Password", type="password")
         
-        if st.button("🔄 Update Password"):
+        if st.button(" Update Password"):
             if not current_password or not new_password or not confirm_new_password:
-                st.error("❌ All fields are required")
+                st.error(" All fields are required")
             elif new_password != confirm_new_password:
-                st.error("❌ New passwords do not match")
+                st.error(" New passwords do not match")
             else:
                 success, message = change_password(profile["email"], current_password, new_password)
                 if success:
-                    st.toast(f"✅ {message}")
+                    st.toast(f" {message}")
                 else:
-                    st.error(f"❌ {message}")
+                    st.error(f" {message}")
     
     with history_tab:
         st.subheader("Resume Ranking History")
         
         history = get_user_history(profile["email"])
         if history.empty:
-            st.info("📝 No ranking history found")
+            st.info(" No ranking history found")
         else:
             for idx, row in history.iterrows():
                 with st.expander(f"Job: {row['job_title']} - {row['timestamp']}"):
@@ -657,7 +658,7 @@ def show_profile_page():
             results = pd.read_json(row["results"])
             st.dataframe(results, hide_index=True)
         except:
-            st.warning("⚠ Error loading results data")
+            st.warning(" Error loading results data")
 
 
 
@@ -673,7 +674,7 @@ def show_dashboard():
             font-weight: 800;
             text-align: center;
             font-size: 2.5rem;">
-            🚀 Welcome to HireSense AI
+             Welcome to HireSense AI
         </h2>
     """, unsafe_allow_html=True)
 
@@ -682,7 +683,7 @@ def show_dashboard():
 
     # --- Job Information Section ---
     with st.container():
-        st.subheader("📄 Job Information")
+        st.subheader(" Job Information")
         st.markdown("Fill in the job details to start screening candidates.")
         
         job_titles = [
@@ -694,7 +695,7 @@ def show_dashboard():
     st.markdown("---")
 
     # --- Job Description & Resume Upload ---
-    st.subheader("📋 Job Description & 📂 Resume Upload")
+    st.subheader(" Job Description &  Resume Upload")
 
     col1, col2 = st.columns([1.2, 1])
 
@@ -716,7 +717,7 @@ def show_dashboard():
         )
 
         if uploaded_files:
-            st.success(f"✅ {len(uploaded_files)} resume(s) uploaded successfully")
+            st.success(f" {len(uploaded_files)} resume(s) uploaded successfully")
 
     st.markdown("---")
 
@@ -724,8 +725,8 @@ def show_dashboard():
     st.markdown("### Ready to rank candidates?")
 
     # --- Processing & Ranking ---
-    if st.button("🔍 Rank Resumes", disabled=not (uploaded_files and job_description)):
-        with st.spinner("🔍 Processing resumes..."):
+    if st.button(" Rank Resumes", disabled=not (uploaded_files and job_description)):
+        with st.spinner(" Processing resumes..."):
             resumes = []
             file_names = []
             error_files = []
@@ -756,7 +757,7 @@ def show_dashboard():
             progress_bar.empty()
             
             if error_files:
-                st.warning(f"⚠ Could not process {len(error_files)} files: {', '.join(error_files)}")
+                st.warning(f" Could not process {len(error_files)} files: {', '.join(error_files)}")
             
             if resumes:
                 progress_bar = st.progress(0)
@@ -790,7 +791,7 @@ def show_dashboard():
 
                 # --- Summary Metrics ---
                 st.markdown("---")
-                st.subheader("📈 Quick Insights")
+                st.subheader(" Quick Insights")
                 m1, m2, m3 = st.columns(3)
                 m1.metric("Total Resumes Scanned", len(results_df))
                 avg_score = f"{results_df['Raw Score'].mean() * 100:.1f}%"
@@ -800,7 +801,7 @@ def show_dashboard():
                 
                 # --- Candidate Profile Cards (Top 3) ---
                 st.markdown("---")
-                st.subheader("🌟 Top Candidates Profiles")
+                st.subheader(" Top Candidates Profiles")
                 top_3 = results_df.head(3)
                 cols = st.columns(len(top_3))
                 for idx, (_, row) in enumerate(top_3.iterrows()):
@@ -809,7 +810,7 @@ def show_dashboard():
                             st.markdown(f"<h3 style='text-align: center;'>👤 {row['Resume Name']}</h3>", unsafe_allow_html=True)
                             st.markdown(f"<h2 style='text-align: center; color: #4CAF50;'>{row['Match Score']*100:.1f}%</h2>", unsafe_allow_html=True)
                             st.markdown(f"<p style='text-align: center;'>Rank: #{row['Rank']}</p>", unsafe_allow_html=True)
-                            st.markdown(f"<p style='text-align: center; color: #1fc7d4; font-weight: bold;'>💡 Suggested Role: {row['Suggested Role']}</p>", unsafe_allow_html=True)
+                            st.markdown(f"<p style='text-align: center; color: #1fc7d4; font-weight: bold;'> Suggested Role: {row['Suggested Role']}</p>", unsafe_allow_html=True)
                             
                             # Recommendation Badge
                             rec_color = "#4CAF50" if row['Recommendation'] == "Hire" else "#FFC107" if row['Recommendation'] == "Maybe" else "#F44336"
@@ -818,9 +819,9 @@ def show_dashboard():
                                     Decision: {row['Recommendation']}
                                 </div>
                             """, unsafe_allow_html=True)
-                            st.info(f"📝 {row['Reason']}")
+                            st.info(f" {row['Reason']}")
 
-                            with st.expander("🧠 Why this score?"):
+                            with st.expander(" Why this score?"):
                                 resume_text = resumes[file_names.index(row['Resume Name'])].lower()
                                 jd_words = set(re.findall(r'\b[a-z]{5,}\b', job_description.lower()))
                                 jd_words = jd_words - ENGLISH_STOP_WORDS
@@ -840,17 +841,17 @@ def show_dashboard():
                                 
                                 ai_missing = row.get('Missing Skills', [])
                                 if ai_missing:
-                                    st.markdown("**🚀 AI Recommended Skills (to reach 100%):**")
+                                    st.markdown("** AI Recommended Skills (to reach 100%):**")
                                     st.markdown(" ".join([f"`{s}`" for s in ai_missing]))
                 
                 # --- Detailed Results ---
                 st.markdown("---")
-                st.subheader("🏆 Ranked Resumes (All Data)")
+                st.subheader(" Ranked Resumes (All Data)")
                 styled_df = results_df.drop(columns=["Raw Score"]).style.format({"Match Score": "{:.1%}"}).background_gradient(subset=["Match Score"], cmap="Greens")
                 st.dataframe(styled_df, hide_index=True)
                 
                 # --- Visualize top candidates (Plotly) ---
-                st.subheader("📊 Match Score Distribution")
+                st.subheader(" Match Score Distribution")
                 top_n = min(len(results_df), 10)
                 chart_data = results_df.head(top_n).copy()
                 fig = px.bar(
@@ -881,16 +882,16 @@ def show_dashboard():
                 col1, col2 = st.columns(2)
                 with col1:
                     csv = results_df.to_csv(index=False).encode('utf-8')
-                    st.download_button("📥 Download CSV", csv, "ranked_resumes.csv", "text/csv")
+                    st.download_button(" Download CSV", csv, "ranked_resumes.csv", "text/csv")
                 with col2:
                     buffer = io.BytesIO()
                     with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
                         results_df.to_excel(writer, index=False)
                     buffer.seek(0)
-                    st.download_button("📥 Download Excel", buffer, "ranked_resumes.xlsx", 
+                    st.download_button(" Download Excel", buffer, "ranked_resumes.xlsx", 
                                       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             else:
-                st.error("❌ No valid resumes to process")
+                st.error(" No valid resumes to process")
 
 # --- App Sidebar ---
 def render_sidebar():
@@ -971,7 +972,7 @@ def render_sidebar():
             st.session_state["user_email"] = None
             st.session_state["user_name"] = None
             st.session_state["current_page"] = "login"
-            st.toast("👋 Logged out successfully!")
+            st.toast(" Logged out successfully!")
             st.rerun()
 
 # --- Global Footer (outside sidebar) ---
@@ -1030,7 +1031,7 @@ def main():
             '>
             Hire smarter, <br>
             <span style="color: #1fc7d4;">not harder.</span>
-            </h1>
+            </h1>   
             """, unsafe_allow_html=True)
             
             st.markdown("""
